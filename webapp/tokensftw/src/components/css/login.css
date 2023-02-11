@@ -22,3 +22,38 @@
     font-weight: 400;
     margin-bottom: 1rem;
 }
+
+.loginButton {
+    width: 100%;
+    height: 3rem;
+    background-color: #fff;
+    color: #004c90;
+    /* border: 3px solid #004c90; */
+    border: 10px solid;
+    border-image-slice: 1;
+    border-width: 5px;
+    border-image-source: linear-gradient(to right, #3d9df1, #004c90);
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-top: 1rem;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    transition: all 0.35s ease-in;
+    border-radius: 10px;
+}
+
+.loginButton:hover {
+    border-image-source: linear-gradient(to right, #004c90, #004c90);
+    color: #fff;
+    background-color: #004c90;
+    transition: all 0.35s ease-in;
+}
+
+/* * {
+    background-image: url('../../assets/bg.jpg') !important;
+    background-size: cover !important;
+    color: #fff !important;
+} */
