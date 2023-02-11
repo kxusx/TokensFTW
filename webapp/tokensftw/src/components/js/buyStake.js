@@ -8,7 +8,7 @@ import CardActions from "@mui/material/CardActions";
 import { ethers } from 'ethers';
 import fractionalReal from '../../artifacts/contracts/fractionalReal.sol/fractionalReal.json'
 // const contractAddress = process.env.CONTRACT_ADDRESS;
-const contractAddress = "0x5FC8d32690cc91D4c39d9d3abcBD16989F875707";
+// const contractAddress = "0x5FC8d32690cc91D4c39d9d3abcBD16989F875707";
 
 const BuyNft = () => {
 
@@ -18,7 +18,7 @@ const BuyNft = () => {
   async function getStakeSales() {
     if (typeof window.ethereum !== "undefined") {
       const provider = new ethers.providers.Web3Provider(window.ethereum);
-      const contract = new ethers.Contract(contractAddress,fractionalReal.abi,provider);
+      const contract = new ethers.Contract(process.env.REACT_APP_CONTRACT_ADDRESS, fractionalReal.abi,provider);
       try {
         const data = await contract.getStakeSales();
         console.log("data: ", data);
@@ -36,6 +36,7 @@ const BuyNft = () => {
 
   // create useffect hook to call getStakeSales
   useEffect(() => {
+    console.log(process.env.REACT_APP_CONTRACT_ADDRESS)
     getStakeSales();
   }, []);
 
