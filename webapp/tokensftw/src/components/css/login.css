@@ -1,13 +1,14 @@
 .loginContainer {
     width: 30% !important;
     height: 100%;
-    background-color: #f1f1f1;
+    background-color: #fff;
     justify-content: center;
     align-items: center;
     margin: auto;
-    margin-top: 35vh;
-    padding: 2rem;
     border-radius: 20px;
+    margin-top: 2%;
+    padding: 5%;
+    font-size: 5rem;
 }
 
 .loginTitle {
