@@ -10,7 +10,7 @@ import fractionalReal from '../../artifacts/contracts/fractionalReal.sol/fractio
 // const { ethers } = require("hardhat");
 
 // const contractAddress = process.env.CONTRACT_ADDRESS;
-const contractAddress = "0x5FC8d32690cc91D4c39d9d3abcBD16989F875707";
+const contractAddress = "0x37A9D54d51C9969701dE69D1825444F6110E9634";
 
 const SellStake = () => {
 

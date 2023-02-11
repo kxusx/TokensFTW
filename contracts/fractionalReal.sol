@@ -71,11 +71,12 @@ contract fractionalReal is ERC20, Ownable, ERC721Holder {
 
     // ---------------------------------------------------------------
     // STAKE MARKET FUNCTIONALITY
-
+    function getStakeSellsLength() external view returns(uint256){
+        return stakeSales.length;
+    }
     function getStakeSales() external view returns(stakeSale[] memory){
         return stakeSales;
     }   
-
     function sellStake(uint256 _noOfTokens, uint256 _priceOfToken) external returns(bool){
         require(_noOfTokens > 0, "Amount needs to be more than 0");
         require(_priceOfToken > 0, "Price needs to be more than 0");
@@ -141,6 +142,14 @@ contract fractionalReal is ERC20, Ownable, ERC721Holder {
     // RENT STUFF
     // array of tenant requests
     address[] public tenantRequests;
+    // function to return number of tenantRequests
+    function getTenantRequestsLength()
+        public
+        view
+        returns(uint256)
+    {
+        return tenantRequests.length;
+    }
 
     // function to return tenantRequests
     function getTenantRequests()
@@ -149,6 +158,15 @@ contract fractionalReal is ERC20, Ownable, ERC721Holder {
         returns(address[] memory)
     {
         return tenantRequests;
+    }
+
+    // function to return number of tenants
+    function getTenantsLength()
+        public
+        view
+        returns(uint256)
+    {
+        return tenants.length;
     }
 
     // function to return tenants
