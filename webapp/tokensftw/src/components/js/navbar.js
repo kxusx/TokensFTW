@@ -81,8 +81,8 @@ const Navbar = () => {
             {
               localStorage.getItem('userType') !== 'tenant' && (
                 <li className="nav_item">
-              <Link to="./buy-nft" className={nav_item_a_classes.join(" ")}>Buy</Link>
-            </li>
+                  <Link to="./buy-nft" className={nav_item_a_classes.join(" ")}>Buy</Link>
+                </li>
               )
             }
             {
@@ -112,13 +112,13 @@ const Navbar = () => {
             {
               localStorage.getItem('userType') !== null && (
                 <li className="nav_item">
-                  <PersonOutlineOutlinedIcon sx={{ fontSize: 30, color: '#004c90', cursor: 'pointer' }}
+                  <PersonOutlineOutlinedIcon sx={{ fontSize: 30, color: '#fff', cursor: 'pointer' }}
                     onClick={() => {
                       setShowDropDown(!showDropDown);
                     }}
                   />
                   <ArrowDropDownIcon
-                    sx={{ fontSize: 30, color: '#004c90', cursor: 'pointer' }}
+                    sx={{ fontSize: 30, color: '#fff', cursor: 'pointer' }}
                     onClick={() => {
                       setShowDropDown(!showDropDown);
                     }}

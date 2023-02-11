@@ -9,10 +9,13 @@ import Grid from '@mui/material/Grid';
 
 import '../css/login.css';
 import { Typography } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [userType, setUserType] = useState(null);
   const [walletAddress, setWalletAddress] = useState(null);
+
+  const navigate = useNavigate();
 
   const connectWallet = async () => {
     if (typeof window != 'undefined' && typeof window.ethereum != 'undefined') {
@@ -34,12 +37,13 @@ const Login = () => {
   }
 
   return (
-    <div>
+    <div className='loginMainContainer'>
       <Container className='loginContainer'>
         <Typography
           variant="h3"
           component="div"
           gutterBottom
+          className='loginTitle'
         >
           Welcome to TokensFTW
         </Typography>

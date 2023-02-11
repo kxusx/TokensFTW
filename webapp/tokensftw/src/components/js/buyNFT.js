@@ -6,7 +6,7 @@ import Card from '@mui/material/Card';
 import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
 
-const PropertyRent = () => {
+const BuyNft = () => {
   const [tokens, setTokens] = useState([
     {
       'token_address': 'abcdef',
@@ -29,18 +29,11 @@ const PropertyRent = () => {
             component="div"
             gutterBottom
           >
-            Request to Rent
+            Buy NFT
           </Typography>
           <hr />
         </Box>
-        <Typography
-          variant="h4"
-          sx={{
-            marginBottom: "3%"
-          }}
-        >
-          List of Properties Available
-        </Typography>
+
         <Grid container rowSpacing={4}>
           {tokens.map(token => {
             return (
@@ -49,7 +42,6 @@ const PropertyRent = () => {
                   <CardContent
                     sx={{
                       display: 'flex',
-                      alignItems: 'center',
                     }}
                   >
                     <Box
@@ -70,15 +62,24 @@ const PropertyRent = () => {
                         Token Address: {token.token_address}
                       </Typography>
                     </Box>
-                    <Box
-                      sx={{
-                        alignItems: 'center',
-                      }}
-                    >
+                    <Box>
+                      <Typography
+                        fontSize='1.5rem'
+                        align="left"
+                      >
+                        Tokens Available: {token.ntokens}
+                      </Typography>
+                      <Typography
+                        fontSize='1.5rem'
+                        align="left"
+                        gutterBottom
+                      >
+                        Price Per Token: {token.price_per_token}
+                      </Typography>
                       <Typography
                         align="center"
                       >
-                        <div className='loginButton' style={{ width: '300%', margin: 'auto', marginTop: '5%' }}>
+                        <div className='loginButton' style={{ width: '80%', margin: 'auto', marginTop: '5%' }}>
                           Submit
                         </div>
                       </Typography>
@@ -96,5 +97,4 @@ const PropertyRent = () => {
     </div>
   )
 }
-
-export default PropertyRent;
+export default BuyNft;

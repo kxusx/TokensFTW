@@ -70,7 +70,7 @@ const SellStake = () => {
               variant="h5"
               align="left"
             >
-              Token Address: {ntokens}
+              Token Address: {tokenAddress}
             </Typography>
           </Grid>
           <Grid item xs={12}>
@@ -78,7 +78,7 @@ const SellStake = () => {
               variant="h5"
               align="left"
             >
-              Tokens Available: {ntokens}
+              Tokens Available: {tokensAvailable}
             </Typography>
           </Grid> */}
           <Grid item xs={12}>
@@ -112,6 +112,7 @@ const SellStake = () => {
                 variant="h5"
                 align="left"
                 marginRight='2%'
+                width='25%'
               >
                 Enter Price:
               </Typography>
