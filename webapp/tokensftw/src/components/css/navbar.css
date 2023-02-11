@@ -1,6 +1,7 @@
 .navbar {
     height: 8vh;
-    background-color: #fff;
+    /* background-color: rgb(0, 14, 33); */
+    background-color: #00294d;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -42,7 +43,8 @@
     font-size: 2vw;
     font-weight: 900;
     text-align: left;
-    color: #004c90;
+    color: #fff;
+    /* background-color: #fff; */
 }
 
 .navbar_logo_text_2 {
@@ -67,7 +69,8 @@
 }
 
 .nav_item_a {
-    color: #004c90;
+    /* color: #004c90; */
+    color: #fff;
     text-decoration: none;
     margin-right: 1rem;
     padding: 30px 20px 30px 20px;
@@ -86,4 +89,26 @@
     background-color: #fff;
     color: #ff5325;
     border-radius: 5px;
+}
+
+.user {
+    width: 12vw;
+    position: absolute;
+    list-style: none;
+    text-align: start;
+    top: 8vh;
+    right: 5vh;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 3;
+    animation: growDown 400ms ease-in-out forwards;
+    transform-origin: top center;
+}
+
+.user li {
+    background-color: #fff;
+    /* cursor: pointer; */
+    padding: 0.5vw;
+    padding-top: 1vw;
+    padding-bottom: 1vw;
+    font-size: 0.85vw;
 }

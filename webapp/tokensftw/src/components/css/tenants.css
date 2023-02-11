@@ -1,0 +1,48 @@
+.tabs_wrapper {
+  width: 100%;
+  color: #000;
+  border-radius: 1rem;
+}
+
+.tabs_wrapper>ul.nav-tab>li {
+  padding: 10px 10px;
+  list-style: none;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.tabs_wrapper>ul.nav-tab1>li {
+  padding: 10px 10px;
+  list-style: none;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.tabs_wrapper>ul.nav-tab1>li {
+  padding: 10px 10px;
+  list-style: none;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+ul.nav-tab {
+  width: 60%;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+ul.nav-tab li.active {
+  color: #004c90;
+  border-bottom: solid;
+}
+
+ul.nav-tab1 {
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
+ul.nav-tab1 li.active {
+  color: #004c90;
+}

@@ -19,10 +19,14 @@
   "homepage": "https://github.com/kxusx/TokensFTW#readme",
   "devDependencies": {
     "@nomicfoundation/hardhat-toolbox": "^2.0.1",
+    "ethers": "^5.7.2",
     "hardhat": "^2.12.7"
   },
   "dependencies": {
+    "@nomiclabs/hardhat-waffle": "^2.0.5",
     "@openzeppelin/contracts": "^4.8.1",
-    "dotenv": "^16.0.3"
+    "chart.js": "^4.2.1",
+    "dotenv": "^16.0.3",
+    "react-chartjs-2": "^5.2.0"
   }
 }
