@@ -72,7 +72,6 @@ contract fractionalReal is ERC20, Ownable, ERC721Holder {
     // ---------------------------------------------------------------
     // STAKE MARKET FUNCTIONALITY
 
-    // function to return all the stakeSales
     function getStakeSales() external view returns(stakeSale[] memory){
         return stakeSales;
     }   
@@ -93,6 +92,9 @@ contract fractionalReal is ERC20, Ownable, ERC721Holder {
         address payable _stakeholder = payable(stakeSales[_index].stakeholder);
         (bool sent, ) = _stakeholder.call{value: msg.value}("");
         require(sent, "Failed to send Ether");
+        
+        // remove _index from stakesales
+        stakeSales[_index] = stakeSales[stakeSales.length - 1];
         stakeSales.pop();
 
         // if buyer is not a stakeholder, add him
@@ -139,6 +141,24 @@ contract fractionalReal is ERC20, Ownable, ERC721Holder {
     // RENT STUFF
     // array of tenant requests
     address[] public tenantRequests;
+
+    // function to return tenantRequests
+    function getTenantRequests()
+        public
+        view
+        returns(address[] memory)
+    {
+        return tenantRequests;
+    }
+
+    // function to return tenants
+    function getTenants()
+        public
+        view
+        returns(tenant[] memory)
+    {
+        return tenants;
+    }
 
 //  tenant requests to rent
     function requestToRent()
