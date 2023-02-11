@@ -21,27 +21,27 @@ import { Typography } from '@mui/material';
 const activeTenantsList = [
   {
     id: 1,
-    address: '1 Main Street',
+    address: '98234798234730247324732',
     rent: 1000,
   },
   {
     id: 2,
-    address: '2 Main Street',
+    address: 'eiudhf938274823hedadwod',
     rent: 2000,
   },
   {
     id: 3,
-    address: '3 Main Street',
+    address: '982347982idsu0247324732',
     rent: 3000,
   },
   {
     id: 4,
-    address: '4 Main Street',
+    address: '9823479823473024729346392',
     rent: 4000,
   },
   {
     id: 5,
-    address: '5 Main Street',
+    address: '9820808099ss4730247324732',
     rent: 5000,
   },
 ];
@@ -49,23 +49,23 @@ const activeTenantsList = [
 const requestedTenantsList = [
   {
     id: 1,
-    address: '1 Main Street',
+    address: '98234798234730247324732',
   },
   {
     id: 2,
-    address: '2 Main Street',
+    address: 'eiudhf938274823hedadwod',
   },
   {
     id: 3,
-    address: '3 Main Street',
+    address: '982347982idsu0247324732',
   },
   {
     id: 4,
-    address: '4 Main Street',
+    address: '9823479823473024729346392',
   },
   {
     id: 5,
-    address: '5 Main Street',
+    address: '9820808099ss4730247324732',
   },
 ];
 
