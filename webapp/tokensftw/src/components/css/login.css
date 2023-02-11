@@ -1,0 +1,23 @@
+.loginContainer {
+    width: 30% !important;
+    height: 100%;
+    background-color: #f1f1f1;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    margin-top: 35vh;
+    padding: 2rem;
+    border-radius: 20px;
+}
+
+.loginTitle {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.loginSubtitle {
+    font-size: 1.2rem;
+    font-weight: 400;
+    margin-bottom: 1rem;
+}
