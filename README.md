@@ -10,6 +10,8 @@ This is a contract for a real estate token built on the Ethereum blockchain. It 
 
 In the frontend, we allow for stakeholders to put their tokens for sale, they can choose to only a part of their tokens at sale for their chosen price. Then other stakeholders/buyers can purchase those tokens at the agreed price.
 
+![imgs/login]
+
 
 
 
