@@ -81,7 +81,7 @@ const Navbar = () => {
             {
               localStorage.getItem('userType') !== 'tenant' && (
                 <li className="nav_item">
-                  <Link to="./buy-nft" className={nav_item_a_classes.join(" ")}>Buy</Link>
+                  <Link to="./buy-stake" className={nav_item_a_classes.join(" ")}>Buy</Link>
                 </li>
               )
             }

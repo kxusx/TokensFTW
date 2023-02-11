@@ -26,12 +26,16 @@ const Login = () => {
       setWalletAddress(accounts[0]);
       if (userType === 'owner') {
         window.location.href = '/owner-dashboard';
+        window.location.reload();
+        // navigate('/owner-dashboard');
       }
       if (userType === 'stake-holder') {
         window.location.href = '/stakeholder-dashboard';
+        window.location.reload();
       }
       if (userType === 'tenant') {
         window.location.href = '/tenant-dashboard';
+        window.location.reload();
       }
     }
   }
