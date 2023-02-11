@@ -92,6 +92,9 @@ contract RealEstateToken is ERC20, Ownable, ERC721Holder {
         address payable _stakeholder = payable(stakeSales[_index].stakeholder);
         (bool sent, ) = _stakeholder.call{value: msg.value}("");
         require(sent, "Failed to send Ether");
+        
+        // remove _index from stakesales
+        stakeSales[_index] = stakeSales[stakeSales.length - 1];
         stakeSales.pop();
 
         // if buyer is not a stakeholder, add him
