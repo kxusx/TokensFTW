@@ -20,6 +20,8 @@ Owner Dashboard Screen
 Sell Stake Screen
 ![](https://github.com/kxusx/TokensFTW/blob/master/imgs/buyStake.jpeg)
 Buy Stake Screen
+![](https://github.com/kxusx/TokensFTW/blob/master/imgs/tenant.jpeg)
+Tenants Screen
 
 
 
