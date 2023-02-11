@@ -13,8 +13,8 @@ import CardContent from '@mui/material/CardContent';
 import Box from '@mui/material/Box';
 import { Modal } from '@mui/material';
 import { Typography } from '@mui/material';
-import 'chart.js/auto';
-import { Doughnut } from 'react-chartjs-2';
+// import 'chart.js/auto';
+// import { Doughnut } from 'react-chartjs-2';
 
 const StakeHolderDashboard = () => {
   const [total_tokens, setTotalTokens] = useState(100);
@@ -112,9 +112,9 @@ const StakeHolderDashboard = () => {
                     width: "40%"
                   }}
                 >
-                  <div className="chartContainer">
+                  {/* <div className="chartContainer">
                     <Doughnut data={data} options={options} height={200} width={200} />
-                  </div>
+                  </div> */}
                 </Box>
               </CardContent>
             </Card>
