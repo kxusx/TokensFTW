@@ -13,7 +13,7 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 //0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2
 //0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db
 
-contract RealEstateToken is ERC20, Ownable, ERC721Holder {
+contract fractionalReal is ERC20, Ownable, ERC721Holder {
     using SafeMath for uint256;
 
     // added
