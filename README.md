@@ -4,6 +4,8 @@ This is a contract for a real estate token built on the Ethereum blockchain. It 
 
 The contract has a number of state variables, such as numTokens which tracks the number of tokens that exist, stakeholders which is an array of addresses of the token's stakeholders, and status which tracks the current status of the token (unrented, rented, or for sale).
 
+The contract also implements functionality for selling stakes in the real estate assets, and has various functions to allow stakeholders to manage their stakes.
+
 In the frontend, we allow for stakeholders to put their tokens for sale, they can choose to only a part of their tokens at sale for their chosen price. Then other stakeholders/buyers can purchase those tokens at the agreed price.
 
 
