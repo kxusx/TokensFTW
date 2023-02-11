@@ -28,7 +28,6 @@ contract RealEstateToken is ERC20, Ownable, ERC721Holder {
     // 2 -> for sale
 
     mapping(address => uint256) public revenues;
-    uint256 public tokenPrice;
     uint256 public accumulated;
 
     IERC721 public collection;
@@ -39,8 +38,11 @@ contract RealEstateToken is ERC20, Ownable, ERC721Holder {
     uint256 public salePrice;
     bool public canRedeem = false;
 
-    mapping(address => uint) rent;
-    address[] public tenantAddresses;
+    struct tenant{
+        address tenantAddress;
+        uint rent;
+    }
+    tenant[] public tenants;
 
     struct stakeSale{
         address stakeholder;
@@ -55,27 +57,13 @@ contract RealEstateToken is ERC20, Ownable, ERC721Holder {
         stakeholders.push(_owner);
     }
 
-    // function initialize(address _collection, uint256 _tokenId, uint256 _noOfTokens, uint256 _tokenPrice) external onlyOwner {
-    //     require(!initialized, "Already initialized");
-    //     require(_noOfTokens > 0, "Amount needs to be more than 0");
-    //     collection = IERC721(_collection);
-    //     collection.safeTransferFrom(msg.sender, address(this), _tokenId);
-    //     tokenId = _tokenId;
-    //     initialized = true;
-    //     tokenPrice = _tokenPrice;
-    //     status = 0; // unrented
-    //     numTokens = _noOfTokens;
-    //     _mint(msg.sender, _noOfTokens);
-    // }
-
-    function initialize(uint256 _noOfTokens, uint256 _tokenPrice) external onlyOwner {
+    function initialize(uint256 _noOfTokens) external onlyOwner {
         require(!initialized, "Already initialized");
         require(_noOfTokens > 0, "Amount needs to be more than 0");
         // collection = IERC721(_collection);
         // collection.safeTransferFrom(msg.sender, address(this), _tokenId);
         // tokenId = _tokenId;
         initialized = true;
-        tokenPrice = _tokenPrice;
         status = 0; // unrented
         numTokens = _noOfTokens;
         _mint(msg.sender, _noOfTokens);
@@ -84,24 +72,10 @@ contract RealEstateToken is ERC20, Ownable, ERC721Holder {
     // ---------------------------------------------------------------
     // STAKE MARKET FUNCTIONALITY
 
-    function buyFromOwner()
-        public
-        payable
-        returns(bool)
-    {
-        uint256 money = msg.value;
-
-        // stakeholders[0] is owner
-        (bool sent, ) = stakeholders[0].call{value: msg.value}("");
-        require(sent, "Failed to send Ether");
-        // owner transfers tokens
-        _transfer(stakeholders[0],msg.sender, money/(tokenPrice*10**18));
-        
-        // if sender is not a stakeholder, add him
-        (bool _isStakeholder, ) = isStakeholder(msg.sender);
-        if (!_isStakeholder) stakeholders.push(msg.sender);
-        return true;
-    }
+    // function to return all the stakeSales
+    function getStakeSales() external view returns(stakeSale[] memory){
+        return stakeSales;
+    }   
 
     function sellStake(uint256 _noOfTokens, uint256 _priceOfToken) external returns(bool){
         require(_noOfTokens > 0, "Amount needs to be more than 0");
@@ -141,25 +115,6 @@ contract RealEstateToken is ERC20, Ownable, ERC721Holder {
         return (false, 0);
     }
 
-    // function addStakeholder(address _stakeholder)
-    //     public
-    //     onlyOwner
-    // {
-    //     (bool _isStakeholder, ) = isStakeholder(_stakeholder);
-    //     if (!_isStakeholder) stakeholders.push(_stakeholder);
-    // }
-
-    // function removeStakeholder(address _stakeholder)
-    //     public
-    //     onlyOwner
-    // {
-    //     (bool _isStakeholder, uint256 s) = isStakeholder(_stakeholder);
-    //     if (_isStakeholder){
-    //         stakeholders[s] = stakeholders[stakeholders.length - 1];
-    //         stakeholders.pop();
-    //     }
-    // }
-
     // ---------------------------------------------------------------
     // DISTRIBUTE 
 
@@ -182,40 +137,67 @@ contract RealEstateToken is ERC20, Ownable, ERC721Holder {
 
     // ---------------------------------------------------------------
     // RENT STUFF
+    // array of tenant requests
+    address[] public tenantRequests;
 
-    function rentToTenant(address _tenantAddress, uint _rent) 
-        public 
+//  tenant requests to rent
+    function requestToRent()
+        public
+        returns(bool)
+    {
+        tenantRequests.push(msg.sender);
+        return true;
+    }
+
+    // owner accepts the request
+    function acceptRequest(uint _index, uint _rent)
+        public
         onlyOwner
         returns(bool)
     {
-        tenantAddresses.push(_tenantAddress);
-        rent[_tenantAddress] = _rent*10**18; // rent in ether
+        require(_index < tenantRequests.length, "Index out of bounds");
+        tenants.push(tenant(tenantRequests[_index], _rent));
 
-        // change status to rented
-        status = 1;
+        tenantRequests[_index] = tenantRequests[tenantRequests.length - 1];
+        tenantRequests.pop();
         return true;
     }
+
+    // owner rejects the request
+    function rejectRequest(uint _index)
+        public
+        onlyOwner
+        returns(bool)
+    {
+        require(_index < tenantRequests.length, "Index out of bounds");
+        tenantRequests[_index] = tenantRequests[tenantRequests.length - 1];
+        tenantRequests.pop();
+        return true;
+    }
+
 
     // only tenant can pay the rent
     function rentPayment()
         public payable
     {
-        uint256 money = msg.value;
+        uint256 moneySent = msg.value;
+        uint rent;
         
         // check for isTenant
         bool isTenant = false;
-        for(uint i = 0; i< tenantAddresses.length; i++){
-            if(msg.sender == tenantAddresses[i]){
+        for(uint i = 0; i< tenants.length; i++){
+            if(msg.sender == tenants[i].tenantAddress){
                 isTenant = true;
+                rent = tenants[i].rent;
             }
         }
         require(isTenant==true, "Only Tenant can pay rent");
 
         // check for exact rent
         // require(money==rent/tenantAddresses.length, "Send Exact Rent");
-        require(money == rent[msg.sender], "Send Exact Rent");
+        require(moneySent == rent, "Send Exact Rent");
 
-        accumulated+=money;
+        accumulated+=moneySent;
     }
     // ---------------------------------------------------------------
 
@@ -235,7 +217,6 @@ contract RealEstateToken is ERC20, Ownable, ERC721Holder {
     // Remove 4. Owner approves one of the eligibile proposals(which has recieved confirmations from all stakeholders) by calling approveProposal()
     
     // 5. Buyer completes the sale process by paying to the contract and receiving the nft
-
     
     address finalBuyer;
     uint finalSalePrice;
