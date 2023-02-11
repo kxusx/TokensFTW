@@ -79,9 +79,9 @@ const BuyNft = () => {
                       <Typography
                         align="center"
                       >
-                        <Button
-                          variant='contained'
-                        >Buy Stake</Button>
+                        <div className='loginButton' style={{ width: '80%', margin: 'auto', marginTop: '5%' }}>
+                          Submit
+                        </div>
                       </Typography>
 
                     </Box>

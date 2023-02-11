@@ -1,24 +1,25 @@
 .loginContainer {
     width: 30% !important;
     height: 100%;
-    background-color: #fff;
+    /* background-color: #fff; */
+    background: none;
     justify-content: center;
     align-items: center;
     margin: auto;
     border-radius: 20px;
-    margin-top: 2%;
+    margin-top: 10vh;
     padding: 5%;
     font-size: 5rem;
 }
 
 .loginTitle {
-    font-size: 2rem;
+    font-size: 3rem;
     font-weight: 600;
     margin-bottom: 1rem;
 }
 
 .loginSubtitle {
-    font-size: 1.2rem;
+    font-size: 2rem;
     font-weight: 400;
     margin-bottom: 1rem;
 }
@@ -28,13 +29,12 @@
     height: 3rem;
     background-color: #fff;
     color: #004c90;
-    /* border: 3px solid #004c90; */
     border: 10px solid;
     border-image-slice: 1;
     border-width: 5px;
     border-image-source: linear-gradient(to right, #3d9df1, #004c90);
     border-radius: 5px;
-    font-size: 1rem;
+    font-size: 1.5rem;
     font-weight: 600;
     margin-top: 1rem;
     cursor: pointer;
@@ -43,17 +43,22 @@
     display: flex;
     transition: all 0.35s ease-in;
     border-radius: 10px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
 }
 
 .loginButton:hover {
+    /* border-image-source: linear-gradient(to right, rgb(1, 158, 201), rgb(1, 158, 201)); */
     border-image-source: linear-gradient(to right, #004c90, #004c90);
     color: #fff;
+    /* background-color: #001527; */
     background-color: #004c90;
     transition: all 0.35s ease-in;
 }
 
-/* * {
-    background-image: url('../../assets/bg.jpg') !important;
-    background-size: cover !important;
-    color: #fff !important;
-} */
+.loginMainContainer {
+    height: 82vh;
+    /* background-image: url(../../assets/bg.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: #fff !important; */
+}

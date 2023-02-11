@@ -78,9 +78,9 @@ const PropertyRent = () => {
                       <Typography
                         align="center"
                       >
-                        <Button
-                          variant='contained'
-                        >Request for Rent </Button>
+                        <div className='loginButton' style={{ width: '300%', margin: 'auto', marginTop: '5%' }}>
+                          Submit
+                        </div>
                       </Typography>
 
                     </Box>

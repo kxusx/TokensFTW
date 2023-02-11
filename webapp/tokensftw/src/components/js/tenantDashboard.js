@@ -15,6 +15,21 @@ import { Modal } from '@mui/material';
 import { Typography } from '@mui/material';
 
 const TenantDashboard = () => {
+  const rentedList = [
+    {
+      nftID: "9328498320948012412",
+      rent: 1000,
+    },
+    {
+      nftID: "2037401742070923809",
+      rent: 2000,
+    },
+    {
+      nftID: "3240129347803750707",
+      rent: 1500,
+    },
+  ];
+
   return (
     <div>
       <Container className='container-class'>
@@ -26,6 +41,55 @@ const TenantDashboard = () => {
           Tenant Dashboard
         </Typography>
         <hr />
+        <Typography
+          variant="h4"
+          sx={{
+            marginBottom: "3%"
+          }}
+        >
+          List of Properties Rented
+        </Typography>
+        <Grid container rowSpacing={4}>
+          {rentedList.map(property => {
+            return (
+              <Grid item xs={12}>
+                <Card>
+                  <CardContent
+                    sx={{
+                      display: 'flex',
+                      alignItems: 'center',
+                    }}
+                  >
+                    <Box
+                      sx={{
+                        width: "60%"
+                      }}
+                    >
+                      <Typography
+                        fontSize='1.5rem'
+                        align="left"
+                      >
+                        NFT ID: {property.nftID}
+                      </Typography>
+                    </Box>
+                    <Box
+                      sx={{
+                        width: "40%"
+                      }}
+                    >
+                      <Typography
+                        fontSize='1.5rem'
+                        align="right"
+                      >
+                        Rent per month: {property.rent}
+                      </Typography>
+                    </Box>
+                  </CardContent>
+                </Card>
+              </Grid>
+            )
+          })}
+        </Grid>
       </Container>
     </div>
   )

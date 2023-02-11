@@ -8,8 +8,8 @@ import CardActions from "@mui/material/CardActions";
 
 const SellStake = () => {
 
-  const [ntokens, setNtokens] = useState('');
-  const [pricePerToken, setPricePerToken] = useState('');
+  const [tokenAddress, setTokenAddress] = useState('92354289332987480974203470487302948-248-328');
+  const [tokensAvailable, setTokensAvailable] = useState('10');
 
   return (
     <div>
@@ -42,7 +42,7 @@ const SellStake = () => {
               variant="h5"
               align="left"
             >
-              Token Address: {ntokens}
+              Token Address: {tokenAddress}
             </Typography>
           </Grid>
           <Grid item xs={12}>
@@ -50,7 +50,7 @@ const SellStake = () => {
               variant="h5"
               align="left"
             >
-              Tokens Available: {ntokens}
+              Tokens Available: {tokensAvailable}
             </Typography>
           </Grid>
           <Grid item xs={12}>
@@ -64,6 +64,7 @@ const SellStake = () => {
                 variant="h5"
                 align="left"
                 marginRight='2%'
+                width='25%'
               >
                 Enter Price:
               </Typography>
@@ -71,7 +72,25 @@ const SellStake = () => {
             </Box>
           </Grid>
           <Grid item xs={12}>
-            <div className='loginButton' style={{width: '10%', margin: 'auto'}}>
+            <Box
+              sx={{
+                display: 'flex',
+                alignItems: 'center',
+              }}
+            >
+              <Typography
+                variant="h5"
+                align="left"
+                marginRight='2%'
+                width='25%'
+              >
+                Enter Number of Tokens:
+              </Typography>
+              <TextField />
+            </Box>
+          </Grid>
+          <Grid item xs={12}>
+            <div className='loginButton' style={{width: '10%', margin: 'auto', marginTop: '5%'}}>
               Submit
             </div>
           </Grid>
