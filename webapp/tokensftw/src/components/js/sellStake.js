@@ -5,11 +5,39 @@ import '../css/initializeNFT.css'
 import Card from '@mui/material/Card';
 import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
+import { ethers } from 'ethers';
+import fractionalReal from '../../artifacts/contracts/fractionalReal.sol/fractionalReal.json';
+// const { ethers } = require("hardhat");
+
+// const contractAddress = process.env.CONTRACT_ADDRESS;
+const contractAddress = "0x5FC8d32690cc91D4c39d9d3abcBD16989F875707";
 
 const SellStake = () => {
 
-  const [ntokens, setNtokens] = useState('');
+  const [nTokens, setNTokens] = useState('');
   const [pricePerToken, setPricePerToken] = useState('');
+
+
+   // request access to the user's MetaMask account
+  async function requestAccount() {
+    await window.ethereum.request({ method: 'eth_requestAccounts' });
+  }  
+
+  async function clicked(){
+    if (typeof window.ethereum !== 'undefined') {
+      await requestAccount()
+      const provider = new ethers.providers.Web3Provider(window.ethereum)
+      const signer = provider.getSigner()
+      const contract = new ethers.Contract(contractAddress, fractionalReal.abi, signer)
+      try {
+        const data = await contract.sellStake(nTokens, pricePerToken)
+        console.log('data: ', data)
+      } catch (err) {
+        console.log("Error: ", err)
+      }
+    }
+  }
+  
 
   return (
     <div>
@@ -37,7 +65,7 @@ const SellStake = () => {
               Property Token
             </Typography>
           </Grid>
-          <Grid item xs={12}>
+          {/* <Grid item xs={12}>
             <Typography
               variant="h5"
               align="left"
@@ -52,6 +80,26 @@ const SellStake = () => {
             >
               Tokens Available: {ntokens}
             </Typography>
+          </Grid> */}
+          <Grid item xs={12}>
+            <Box
+              sx={{
+                display: 'flex',
+                alignItems: 'center',
+              }}
+            >
+              <Typography
+                variant="h5"
+                align="left"
+                marginRight='2%'
+              >
+                Enter Number of Tokens:
+              </Typography>
+              <TextField 
+                value = {nTokens}
+                onChange={(e) => setNTokens(e.target.value)}
+              />
+            </Box>
           </Grid>
           <Grid item xs={12}>
             <Box
@@ -67,11 +115,14 @@ const SellStake = () => {
               >
                 Enter Price:
               </Typography>
-              <TextField />
+              <TextField 
+                value = {pricePerToken}
+                onChange={(e) => setPricePerToken(e.target.value)}
+              />
             </Box>
           </Grid>
           <Grid item xs={12}>
-            <div className='loginButton' style={{width: '10%', margin: 'auto'}}>
+            <div className='loginButton' style={{width: '10%', margin: 'auto'}} onClick={() => {clicked()}}>
               Submit
             </div>
           </Grid>

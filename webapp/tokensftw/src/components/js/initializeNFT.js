@@ -6,11 +6,11 @@ import '../css/initializeNFT.css'
 
 // for web3 communication
 import { ethers } from 'ethers'
-import fractionalReal from '../../artifacts/contracts/fractionalReal.sol/fractionalReal.json'
+import fractionalReal from '../../artifacts/contracts/fractionalReal.sol/fractionalReal.json';
 
 // require('dotenv').config();
 // const contractAddress = process.env.CONTRACT_ADDRESS;
-const contractAddress = "0x02c750Ef0Bf0CA1e9F07e6298028f2D48d3663d4";
+const contractAddress = "0x5FC8d32690cc91D4c39d9d3abcBD16989F875707";
 
 const InitializeNft = () => {
     const [ntokens, setNtokens] = useState('')
