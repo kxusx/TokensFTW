@@ -138,7 +138,7 @@ const OwnerDashboard = () => {
                     Tokens you own: {tokens_owned} ({tokens_owned / total_tokens * 100}%)
                   </Typography>
                 </Box>
-                <Box
+                {/* <Box
                   sx={{
                     width: "40%"
                   }}
@@ -146,7 +146,7 @@ const OwnerDashboard = () => {
                   <div className="chartContainer">
                     <Doughnut data={data} options={options} height={200} width={200} />
                   </div>
-                </Box>
+                </Box> */}
               </CardContent>
             </Card>
             <Grid item xs={12}>
