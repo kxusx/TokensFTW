@@ -72,7 +72,6 @@ contract RealEstateToken is ERC20, Ownable, ERC721Holder {
     // ---------------------------------------------------------------
     // STAKE MARKET FUNCTIONALITY
 
-    // function to return all the stakeSales
     function getStakeSales() external view returns(stakeSale[] memory){
         return stakeSales;
     }   
@@ -139,6 +138,24 @@ contract RealEstateToken is ERC20, Ownable, ERC721Holder {
     // RENT STUFF
     // array of tenant requests
     address[] public tenantRequests;
+
+    // function to return tenantRequests
+    function getTenantRequests()
+        public
+        view
+        returns(address[] memory)
+    {
+        return tenantRequests;
+    }
+
+    // function to return tenants
+    function getTenants()
+        public
+        view
+        returns(tenant[] memory)
+    {
+        return tenants;
+    }
 
 //  tenant requests to rent
     function requestToRent()
